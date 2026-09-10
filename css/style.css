@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    background: black;
+    color: white;
+}
+
+.intro {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 60px;
+    letter-spacing: 8px;
+}
+
+button {
+    margin-top: 30px;
+    padding: 15px 35px;
+
+    background: transparent;
+    color: white;
+
+    border: 1px solid white;
+
+    cursor: pointer;
+}
+h1 {
+    animation: aparecerTitulo 2s ease;
+}
+
+p {
+    animation: aparecerTexto 3s ease;
+}
+
+button {
+    animation: aparecerBoton 4s ease;
+}
+@keyframes aparecerTitulo {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+@keyframes aparecerTexto {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+@keyframes aparecerBoton {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
