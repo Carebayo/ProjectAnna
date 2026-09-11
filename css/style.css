@@ -1,97 +1,140 @@
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
-    background: black;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #08080a;
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
 }
 
 /* --- SECCIÓN INTRO --- */
 .intro {
+    position: relative;
+    width: 100%;
     height: 100vh;
+    height: 100dvh; /* Soporte perfecto para barras navegadoras de móviles */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: opacity 1.5s ease;
+    overflow: hidden;
+    transition: opacity 1.2s ease, visibility 1.2s ease;
 }
 
 .intro.ocultar {
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
 }
 
+.intro-content {
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+}
+
 h1 {
-    font-size: 60px;
-    letter-spacing: 8px;
-    animation: aparecerTitulo 2s ease;
+    font-size: clamp(32px, 7vw, 60px);
+    letter-spacing: 4px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    animation: aparecerTitulo 1.8s ease forwards;
 }
 
 .intro p {
-    animation: aparecerTexto 3s ease;
+    font-size: clamp(14px, 3.5vw, 20px);
+    margin-top: 10px;
+    letter-spacing: 2px;
+    color: #aaa;
+    animation: aparecerTexto 2.4s ease forwards;
 }
 
 button {
     margin-top: 30px;
-    padding: 15px 35px;
+    padding: 12px 35px;
     background: transparent;
     color: white;
-    border: 1px solid white;
+    font-size: 16px;
+    letter-spacing: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 6px;
     cursor: pointer;
-    animation: aparecerBoton 4s ease;
-    transition: background 0.3s ease, color 0.3s ease;
+    animation: aparecerBoton 3s ease forwards;
+    transition: all 0.3s ease;
 }
 
-button:hover {
+button:active, button:hover {
     background: white;
     color: black;
+    transform: scale(1.03);
 }
 
-/* Animaciones Intro */
+/* --- BURBUJAS EN INICIO --- */
+.bubbles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -80px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    animation: subirBurbuja 12s infinite linear;
+}
+
+.bubble:nth-child(1) { width: 35px; height: 35px; left: 10%; animation-duration: 10s; }
+.bubble:nth-child(2) { width: 18px; height: 18px; left: 25%; animation-duration: 13s; animation-delay: 2s; }
+.bubble:nth-child(3) { width: 50px; height: 50px; left: 45%; animation-duration: 11s; animation-delay: 4s; }
+.bubble:nth-child(4) { width: 15px; height: 15px; left: 60%; animation-duration: 8s;  animation-delay: 1s; }
+.bubble:nth-child(5) { width: 40px; height: 40px; left: 75%; animation-duration: 14s; animation-delay: 3s; }
+.bubble:nth-child(6) { width: 25px; height: 25px; left: 88%; animation-duration: 12s; animation-delay: 5s; }
+
+@keyframes subirBurbuja {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.6; }
+    100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+}
+
 @keyframes aparecerTitulo {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes aparecerTexto {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes aparecerBoton {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- SECCIÓN HISTORIA --- */
 #historia {
     position: relative;
+    width: 100%;
     height: 100vh;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1.5s ease;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding-bottom: 30px;
-    box-sizing: border-box;
+    padding: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.2s ease;
 }
 
 #historia.activa {
@@ -99,51 +142,74 @@ button:hover {
     visibility: visible;
 }
 
-/* Contenedor del Sprite de Anna */
+/* Contenedor adaptativo del personaje */
 .character-container {
-    position: relative;
+    position: absolute;
+    top: 5%;
+    bottom: 140px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 65vh;
+    pointer-events: none;
+    z-index: 2;
 }
 
-/* Configuración de la imagen y animación de entrada */
 .character {
     max-height: 100%;
-    width: auto;
+    max-width: 85%;
+    object-fit: contain;
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s ease, transform 1s ease;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
-/* Estado visible al presionar START */
 .character.anna-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    animation: flotacionSuave 3.5s ease-in-out infinite 1.2s alternate;
 }
 
-/* Caja de Diálogo estilo Novel Visual */
+@keyframes flotacionSuave {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+/* Caja de Texto Adaptada para Móvil */
 .dialog-box {
-    width: 80%;
-    max-width: 800px;
-    background: rgba(0, 0, 0, 0.85);
-    border: 2px solid white;
-    border-radius: 8px;
-    padding: 20px 30px;
-    margin-top: 15px;
+    position: relative;
     z-index: 10;
+    width: 100%;
+    max-width: 750px;
+    background: rgba(10, 10, 14, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(8px);
 }
 
 .dialog-box h3 {
-    margin: 0 0 10px 0;
-    color: #ff4d4d;
-    font-size: 22px;
+    margin-bottom: 6px;
+    color: #ff5252;
+    font-size: clamp(16px, 4.5vw, 22px);
 }
 
 .dialog-box p {
-    margin: 0;
-    font-size: 18px;
+    font-size: clamp(14px, 3.8vw, 18px);
     line-height: 1.5;
+    color: #eaeaea;
+}
+
+/* --- AJUSTES ESPECÍFICOS PARA MÓVILES PANTALLA PEQUEÑA --- */
+@media (max-width: 480px) {
+    .character-container {
+        bottom: 135px;
+    }
+
+    .dialog-box {
+        padding: 12px 16px;
+    }
+}  line-height: 1.5;
 }

@@ -2,25 +2,39 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Anna</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- Pantalla de Inicio -->
     <main class="intro">
-        <h1>PROJECT ANNA</h1>
-        <p>Chapter 1</p>
-        <button id="comenzar">START</button>
+        <!-- Contenedor para las burbujas/partículas de fondo -->
+        <div class="bubbles-container">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+
+        <div class="intro-content">
+            <h1>PROJECT ANNA</h1>
+            <p>Chapter 1</p>
+            <button id="comenzar">START</button>
+        </div>
     </main>
 
+    <!-- Sección de Historia / Visual Novel -->
     <section id="historia" class="historia">
-        <!-- Contenedor para la imagen de Anna con su animación -->
         <div class="character-container">
             <img id="anna-sprite" src="img/anna.png" alt="Anna" class="character">
         </div>
 
-        <!-- Caja de diálogo de la novela visual -->
         <div class="dialog-box">
             <h3 id="speaker-name">Anna</h3>
             <p id="dialog-text">“¿Mamá? ¿Papá?”</p>
