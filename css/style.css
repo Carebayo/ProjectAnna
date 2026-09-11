@@ -78,3 +78,35 @@ button {
     }
 
 }
+#historia {
+    min-height: 100vh;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 1.5s ease;
+
+    padding: 80px 10%;
+}
+
+#historia.activa {
+    opacity: 1;
+    visibility: visible;
+}
+
+.intro {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    transition: opacity 1.5s ease;
+}
+
+.intro.ocultar {
+    opacity: 0;
+    pointer-events: none;
+}
