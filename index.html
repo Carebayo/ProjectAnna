@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ProjectAnna</title>
-	<link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Anna</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <main class="intro">
 
+    <main class="intro">
         <h1>PROJECT ANNA</h1>
-
         <p>Chapter 1</p>
-
         <button id="comenzar">START</button>
-
     </main>
-    <section id="historia">
 
-    <h2>Anna</h2>
+    <section id="historia" class="historia">
+        <!-- Contenedor para la imagen de Anna con su animación -->
+        <div class="character-container">
+            <img id="anna-sprite" src="img/anna.png" alt="Anna" class="character">
+        </div>
 
-    <p>
-        Anna opened her eyes slowly.
-    </p>
+        <!-- Caja de diálogo de la novela visual -->
+        <div class="dialog-box">
+            <h3 id="speaker-name">Anna</h3>
+            <p id="dialog-text">“¿Mamá? ¿Papá?”</p>
+        </div>
+    </section>
 
-</section>
-<script src="js/script.js"></script>
-
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -2,91 +2,96 @@ body {
     margin: 0;
     background: black;
     color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
+/* --- SECCIÓN INTRO --- */
 .intro {
     height: 100vh;
-
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
+    transition: opacity 1.5s ease;
+}
+
+.intro.ocultar {
+    opacity: 0;
+    pointer-events: none;
 }
 
 h1 {
     font-size: 60px;
     letter-spacing: 8px;
+    animation: aparecerTitulo 2s ease;
+}
+
+.intro p {
+    animation: aparecerTexto 3s ease;
 }
 
 button {
     margin-top: 30px;
     padding: 15px 35px;
-
     background: transparent;
     color: white;
-
     border: 1px solid white;
-
     cursor: pointer;
-}
-h1 {
-    animation: aparecerTitulo 2s ease;
-}
-
-p {
-    animation: aparecerTexto 3s ease;
-}
-
-button {
     animation: aparecerBoton 4s ease;
+    transition: background 0.3s ease, color 0.3s ease;
 }
+
+button:hover {
+    background: white;
+    color: black;
+}
+
+/* Animaciones Intro */
 @keyframes aparecerTitulo {
-
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
+
 @keyframes aparecerTexto {
-
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
-
 }
-@keyframes aparecerBoton {
 
+@keyframes aparecerBoton {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
-#historia {
-    min-height: 100vh;
 
+/* --- SECCIÓN HISTORIA --- */
+#historia {
+    position: relative;
+    height: 100vh;
     opacity: 0;
     visibility: hidden;
-
     transition: opacity 1.5s ease;
-
-    padding: 80px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 30px;
+    box-sizing: border-box;
 }
 
 #historia.activa {
@@ -94,19 +99,51 @@ button {
     visibility: visible;
 }
 
-.intro {
-    height: 100vh;
-
+/* Contenedor del Sprite de Anna */
+.character-container {
+    position: relative;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-
     justify-content: center;
-    align-items: center;
-
-    transition: opacity 1.5s ease;
+    align-items: flex-end;
+    height: 65vh;
 }
 
-.intro.ocultar {
+/* Configuración de la imagen y animación de entrada */
+.character {
+    max-height: 100%;
+    width: auto;
     opacity: 0;
-    pointer-events: none;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Estado visible al presionar START */
+.character.anna-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Caja de Diálogo estilo Novel Visual */
+.dialog-box {
+    width: 80%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid white;
+    border-radius: 8px;
+    padding: 20px 30px;
+    margin-top: 15px;
+    z-index: 10;
+}
+
+.dialog-box h3 {
+    margin: 0 0 10px 0;
+    color: #ff4d4d;
+    font-size: 22px;
+}
+
+.dialog-box p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
 }
