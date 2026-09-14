@@ -4,30 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Anna</title>
+    <!-- Fuentes de Google: Cinzel para títulos dramáticos y Montserrat para lectura limpia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <!-- Pantalla de Inicio -->
     <main class="intro">
-        <!-- Contenedor con muchas más burbujas de luz -->
-        <div class="bubbles-container">
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-        </div>
+        <!-- Las burbujas se generarán interactivamente desde JS -->
+        <div class="bubbles-container" id="bubbles-container"></div>
 
         <div class="intro-content">
             <h1>PROJECT ANNA</h1>
@@ -38,13 +26,39 @@
 
     <!-- Sección de Historia / Visual Novel -->
     <section id="historia" class="historia">
-        <div class="character-container">
-            <img id="anna-sprite" src="images/anna.png" alt="Anna" class="character">
-        </div>
-
         <div class="dialog-box">
-            <h3 id="speaker-name">Anna</h3>
-            <p id="dialog-text">“¿Mamá? ¿Papá?”</p>
+            <div class="header-box">
+                <h3 id="speaker-name">Anna</h3>
+                <span id="page-indicator" class="page-indicator">1 / 3</span>
+            </div>
+
+            <!-- PARTE 1 -->
+            <div class="page active" id="page-1">
+                <div class="story-image-container">
+                    <img src="images/Anna part 1.png" alt="Anna despertando en el hospital" class="story-image">
+                </div>
+                <p>Blinding white lights, muffled voices, steady beeping and a question I keep asking myself. Who am I? I hear someone saying a name, MY name, at least it must be mine… over and over.</p>
+                <p>Suddenly everything comes into focus. The voices become sharp, loud. My head is pounding as I sit up. Panic swells in my chest like a balloon. Who are these people?</p>
+            </div>
+
+            <!-- PARTE 2 -->
+            <div class="page" id="page-2">
+                <p>My eyes lock onto the face of one of the people dressed in white. “Where am I?” My voice sounds strange and foreign to me, my throat aches and my voice sounds scratchy and aggressive. I blink and repeat the question, trying to make my voice sound softer, “Where am I?”</p>
+                <p>I am met with silence. A tall slender woman opens her mouth to speak but no words come out. She clears her throat and says simply, “You are in the hospital. There are a few people who would like to see you, so if you could just follow me..” she stops. Hesitant, waiting to see how I will react.</p>
+            </div>
+
+            <!-- PARTE 3 -->
+            <div class="page" id="page-3">
+                <p>I nod and swing my legs off the bed. I feel shaky and unstable but I try not to make that obvious. I have no idea what a hospital even is, all I care about is getting out of that white room with all the strange staring people and nauseating chemical smell.</p>
+                <p>I follow the woman down a seemingly endless white hallway, then she turns left and stops at a huge metal door. Taking out a ring of keys she finds the right one, fits it into the door and swings it open. I am met with the sight of two people, a man and a woman. Both with jet black hair and striking green eyes. The woman is gripping the man’s hand so hard her knuckles are white. The second our eyes meet, everything comes back to me, my name… the accident. My mouth drops open.</p>
+                <p class="dialog-highlight">“Mom? Dad?”</p>
+            </div>
+
+            <!-- CONTROLES -->
+            <div class="controls">
+                <button id="btn-prev" class="nav-btn" disabled>Anterior</button>
+                <button id="btn-next" class="nav-btn">Siguiente</button>
+            </div>
         </div>
     </section>
 
